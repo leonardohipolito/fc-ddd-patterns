@@ -74,6 +74,7 @@ describe("Customer repository test", () => {
     customer.Address = address;
     await customerRepository.create(customer);
 
+    customer.clearDomainEvents();
     const customerResult = await customerRepository.find(customer.id);
 
     expect(customer).toStrictEqual(customerResult);
@@ -102,6 +103,9 @@ describe("Customer repository test", () => {
 
     await customerRepository.create(customer1);
     await customerRepository.create(customer2);
+
+    customer1.clearDomainEvents();
+    customer2.clearDomainEvents();
 
     const customers = await customerRepository.findAll();
 

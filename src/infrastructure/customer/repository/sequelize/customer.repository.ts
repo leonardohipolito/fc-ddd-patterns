@@ -57,6 +57,7 @@ export default class CustomerRepository implements CustomerRepositoryInterface {
       customerModel.city
     );
     customer.changeAddress(address);
+    customer.clearDomainEvents();
     return customer;
   }
 
@@ -76,6 +77,7 @@ export default class CustomerRepository implements CustomerRepositoryInterface {
       if (customerModels.active) {
         customer.activate();
       }
+      customer.clearDomainEvents();
       return customer;
     });
 
